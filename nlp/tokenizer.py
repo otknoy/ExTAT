@@ -1,7 +1,5 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-import sys
-
 import MeCab
 
 class Token:
@@ -31,7 +29,7 @@ def tokenize(text):
         
     return tokens[1:-1]
 
-    
+
 if __name__ == '__main__':
     text = u'Emacs（イーマックス）とは高機能でカスタマイズ性の高いテキストエディタである。スクリーン・エディタとしての人気が高く、特にUNIXのプログラマを中心としたコンピュータ技術者に愛用者が多い。'
 
