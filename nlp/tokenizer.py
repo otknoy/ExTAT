@@ -33,7 +33,7 @@ def tokenize(text):
 if __name__ == '__main__':
     text = u'Emacs（イーマックス）とは高機能でカスタマイズ性の高いテキストエディタである。スクリーン・エディタとしての人気が高く、特にUNIXのプログラマを中心としたコンピュータ技術者に愛用者が多い。'
 
-    terms = tokenize(text.encode('utf-8'))
+    tokens = tokenize(text.encode('utf-8'))
 
-    for t in terms:
+    for t in tokens:
         print t
