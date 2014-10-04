@@ -9,13 +9,34 @@ def term_frequency(term_list):
         tf[t] += 1
     return tf
 
+def document_frequency(docs):
+    df = {}
+    for terms in docs:
+        for t in list(set(terms)):
+            if not df.has_key(t):
+                df[t] = 0
+            df[t] += 1
+    return df
+
 if __name__ == '__main__':
-    text = u'Emacs（イーマックス）とは高機能でカスタマイズ性の高いテキストエディタである。スクリーン・エディタとしての人気が高く、特にUNIXのプログラマを中心としたコンピュータ技術者に愛用者が多い。'
+    texts = [u'Emacs（イーマックス）とは高機能でカスタマイズ性の高いテキストエディタである。スクリーン・エディタとしての人気が高く、特にUNIXのプログラマを中心としたコンピュータ技術者に愛用者が多い。',
+             u'vi（ヴィーアイ）は、Emacsと共にUNIX環境で人気があるテキストエディタ。ビル・ジョイによって開発された。名の由来はVIsual editorないしVisual Interfaceとされる[1][2]。後発のUnix系OSに搭載されているviは、上位互換のVimやnviであることが多い（viコマンドでvimやnviが起動する）。']
 
     import tokenizer
-    tokens = tokenizer.tokenize(text.encode('utf-8'))
-    terms = map(lambda t: t.basic_form, tokens)
 
-    tf = term_frequency(terms)
-    for t, f in tf.items():
-        print t.encode('utf-8'), f
+    print 'tokenize'
+    docs = []
+    for t in texts:
+        tokens = tokenizer.tokenize(t.encode('utf-8'))
+        terms = map(lambda t: t.basic_form, tokens)
+        docs.append(terms)
+        print '|'.join(terms)
+
+    print '\ntf'
+    for d in docs:
+        tf = term_frequency(d)
+        print '{' + ', '.join(["'%s': %d" % (t, f) for t, f in tf.items()]) + '}'
+
+    print '\ndf'
+    df = document_frequency(docs)
+    print '{' + ', '.join(["'%s': %d" % (d, f) for d, f in df.items()]) + '}'
