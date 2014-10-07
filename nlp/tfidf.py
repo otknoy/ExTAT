@@ -66,3 +66,8 @@ if __name__ == '__main__':
     print '\nidf'
     idf = inverse_document_frequency(docs)
     print '{' + ', '.join(["'%s': %f" % (t, v) for t, v in idf.items()]) + '}'
+
+    print '\ntfidf'
+    tfidf_list = tf_idf(docs)
+    for tfidf in tfidf_list:
+        print '{' + ', '.join(["'%s': %.3f" % (t, v) for t, v in tfidf.items()]) + '}'
