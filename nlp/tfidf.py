@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-def term_frequency(term_list):
+def term_frequency(terms):
     tf = {}
-    for t in term_list:
+    for t in terms:
         if not tf.has_key(t):
             tf[t] = 0
         tf[t] += 1
