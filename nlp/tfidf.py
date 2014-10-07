@@ -20,8 +20,8 @@ def document_frequency(texts):
 
 
 if __name__ == '__main__':
-    texts = [u'Emacs（イーマックス）とは高機能でカスタマイズ性の高いテキストエディタである。スクリーン・エディタとしての人気が高く、特にUNIXのプログラマを中心としたコンピュータ技術者に愛用者が多い。',
-             u'vi（ヴィーアイ）は、Emacsと共にUNIX環境で人気があるテキストエディタ。ビル・ジョイによって開発された。名の由来はVIsual editorないしVisual Interfaceとされる[1][2]。後発のUnix系OSに搭載されているviは、上位互換のVimやnviであることが多い（viコマンドでvimやnviが起動する）。']
+    texts = [u'Emacs（イーマックス）とは高機能でカスタマイズ性の高いテキストエディタである。',
+             u'vi（ヴィーアイ）は、Emacsと共にUNIX環境で人気があるテキストエディタ。']
 
     import tokenizer
 
