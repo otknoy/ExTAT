@@ -24,6 +24,20 @@ def inverse_document_frequency(texts):
         idf[t] = 1.0/df[t]
     return idf
 
+def tf_idf(texts):
+    tfidf_list = []
+    idf = inverse_document_frequency(texts)
+    for terms in texts:
+        tf = term_frequency(terms)
+        tfidf = {}
+        for t in idf.keys():
+            if not tf.has_key(t):
+                tfidf[t] = 0.0
+            else:
+                tfidf[t] = tf[t] * idf[t]
+        tfidf_list.append(tfidf)
+    return tfidf_list
+
 
 if __name__ == '__main__':
     texts = [u'Emacs（イーマックス）とは高機能でカスタマイズ性の高いテキストエディタである。',
