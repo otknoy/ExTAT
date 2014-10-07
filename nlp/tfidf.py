@@ -17,10 +17,18 @@ def document_frequency(texts):
         df[t] = [t in text for text in texts].count(True)
     return df
 
+def inverse_document_frequency(texts):
+    df = document_frequency(texts)
+    idf = {}
+    for t in df.keys():
+        idf[t] = 1.0/df[t]
+    return idf
+
 
 if __name__ == '__main__':
     texts = [u'Emacs（イーマックス）とは高機能でカスタマイズ性の高いテキストエディタである。',
              u'vi（ヴィーアイ）は、Emacsと共にUNIX環境で人気があるテキストエディタ。']
+
 
     import tokenizer
 
@@ -39,4 +47,8 @@ if __name__ == '__main__':
 
     print '\ndf'
     df = document_frequency(docs)
-    print '{' + ', '.join(["'%s': %d" % (d, f) for d, f in df.items()]) + '}'
+    print '{' + ', '.join(["'%s': %d" % (t, v) for t, v in df.items()]) + '}'
+
+    print '\nidf'
+    idf = inverse_document_frequency(docs)
+    print '{' + ', '.join(["'%s': %f" % (t, v) for t, v in idf.items()]) + '}'
