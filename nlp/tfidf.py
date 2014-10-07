@@ -10,12 +10,11 @@ def term_frequency(terms):
     return tf
 
 def document_frequency(texts):
+    from itertools import chain
+    all_terms = list(chain.from_iterable(texts)) # flatten
     df = {}
-    for terms in texts:
-        for t in list(set(terms)):
-            if not df.has_key(t):
-                df[t] = 0
-            df[t] += 1
+    for t in all_terms:
+        df[t] = [t in text for text in texts].count(True)
     return df
 
 
