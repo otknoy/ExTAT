@@ -27,8 +27,8 @@ def inverse_document_frequency(texts):
 
 if __name__ == '__main__':
     texts = [u'Emacs（イーマックス）とは高機能でカスタマイズ性の高いテキストエディタである。',
-             u'vi（ヴィーアイ）は、Emacsと共にUNIX環境で人気があるテキストエディタ。']
-
+             u'vi（ヴィーアイ）は、Emacsと共にUNIX環境で人気があるテキストエディタ。',
+             u'nanoは、UNIXを中心としたシステムで使われる、cursesを使ったテキストエディタの一種である。']
 
     import tokenizer
 
