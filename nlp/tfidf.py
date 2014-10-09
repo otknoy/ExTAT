@@ -23,11 +23,18 @@ def document_frequency(texts):
         df[t] = [t in text for text in texts].count(True)
     return df
 
-def inverse_document_frequency(texts):
-    df = document_frequency(texts)
+def inverse_document_frequency(docs, normalize=False):
+    """
+    normalize: Sparck Jones
+    """
+    df = document_frequency(docs)
+    n = len(docs)
     idf = {}
     for t in df.keys():
-        idf[t] = 1.0/df[t]
+        if normalize:
+            idf[t] = math.log(float(n)/df[t])+1
+        else:
+            idf[t] = 1.0/df[t]
     return idf
 
 def tf_idf(texts):
