@@ -1,12 +1,18 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-def term_frequency(terms):
+def term_frequency(terms, normalize=False):
+    """
+    normalize: Harman
+    """
     tf = {}
     for t in terms:
         if not tf.has_key(t):
             tf[t] = 0
         tf[t] += 1
+    if normalize:
+        for t, f in tf.items():
+            tf[t] = math.log(tf[t] + 1) / math.log(len(terms))
     return tf
 
 def document_frequency(texts):
