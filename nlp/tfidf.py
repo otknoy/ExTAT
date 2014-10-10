@@ -37,11 +37,11 @@ def inverse_document_frequency(docs, normalize=False):
             idf[t] = 1.0/df[t]
     return idf
 
-def tf_idf(texts):
+def tf_idf(docs, normalize=False):
     tfidf_list = []
-    idf = inverse_document_frequency(texts)
-    for terms in texts:
-        tf = term_frequency(terms)
+    idf = inverse_document_frequency(docs, normalize=normalize)
+    for terms in docs:
+        tf = term_frequency(terms, normalize=normalize)
         tfidf = {}
         for t in idf.keys():
             if not tf.has_key(t):
