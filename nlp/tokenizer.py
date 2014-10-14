@@ -24,6 +24,8 @@ def tokenizeJp(text):
         
     return tokens[1:-1]
 
+# default
+tokenize = tokenizeJp
 
 if __name__ == '__main__':
     jp_text = u'Emacs（イーマックス）とは高機能でカスタマイズ性の高いテキストエディタである。スクリーン・エディタとしての人気が高く、特にUNIXのプログラマを中心としたコンピュータ技術者に愛用者が多い。'
