@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+import math
 
 def term_frequency(terms, normalize=False):
     """normalize: Harman"""
