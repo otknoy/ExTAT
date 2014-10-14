@@ -48,6 +48,13 @@ def tf_idf(docs, normalize=False):
     return tfidf_list
 
 
+def ngram(terms, n=2):
+    ret = []
+    for i in range(0, len(terms)-n+1):
+        ret.append(terms[i:i+n])
+    return ret
+
+
 if __name__ == '__main__':
     texts = [u'Emacs（イーマックス）とは高機能でカスタマイズ性の高いテキストエディタである。',
              u'vi（ヴィーアイ）は、Emacsと共にUNIX環境で人気があるテキストエディタ。',
