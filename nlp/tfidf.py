@@ -2,9 +2,7 @@
 # -*- coding: utf-8 -*-
 
 def term_frequency(terms, normalize=False):
-    """
-    normalize: Harman
-    """
+    """normalize: Harman"""
     tf = {}
     for t in terms:
         if not tf.has_key(t):
@@ -24,9 +22,7 @@ def document_frequency(texts):
     return df
 
 def inverse_document_frequency(docs, normalize=False):
-    """
-    normalize: Sparck Jones
-    """
+    """normalize: Sparck Jones"""
     df = document_frequency(docs)
     n = len(docs)
     idf = {}
