@@ -58,10 +58,9 @@ if __name__ == '__main__':
     print 'tokenize'
     docs = []
     for t in texts:
-        tokens = tokenizer.tokenize(t.encode('utf-8'))
-        terms = map(lambda t: t.basic_form, tokens)
-        docs.append(terms)
-        print '|'.join(terms)
+        tokens = tokenizer.tokenizeJp(t.encode('utf-8'))
+        docs.append(tokens)
+        print '|'.join(tokens)
 
     print '\ntf'
     for d in docs:
