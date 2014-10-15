@@ -9,11 +9,14 @@ d3.csv(filename, function(data){
     var wordcount = data.map(function(d) {
 	return {
 	    text: d.word,
-	    // size: Math.pow(d.count/2, 1.1)//2*Math.pow(d.count, 1.4)
-	    size: 3*Math.pow(d.count, 1.2)
+	    size: d.count
 	};
     });
 
+    var fontSizeScale = d3.scale.pow()
+	    // .domain([0, d3.max(wordcount, function(d) { return d.size; })])
+	    .domain([0, 28])
+	    .range([0, 128]);
 
     var svg = d3.select(selector).append("svg")
 	    .attr("width", width)
@@ -28,7 +31,7 @@ d3.csv(filename, function(data){
 	    .rotate(function() { return 0;})
 	    // .rotate(function() { return ~~(Math.random() * 2) * 90; })
             .font("Impact")
-            .fontSize(function(d) { return d.size; })
+            .fontSize(function(d) { return fontSizeScale(d.size); })
 	    .on("word", progress)
             .on("end", draw)
 	    .start();
