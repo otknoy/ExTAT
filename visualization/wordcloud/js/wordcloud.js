@@ -2,6 +2,8 @@ var selector = '#wordcloud';
 var width = 1024;
 var height = 768;
 
+var words = [];
+
 var layout = d3.layout.cloud()
 	.timeInterval(10)
 	.size([width, height])
@@ -13,15 +15,11 @@ var layout = d3.layout.cloud()
 	.on("end", draw);
 
 var svg = d3.select(selector).append("svg")
-    .attr("width", width)
-    .attr("height", height);
+	.attr("width", width)
+	.attr("height", height);
 // var background = svg.append("g");
 var vis = svg.append("g")
 	.attr("transform", "translate(" + [width >> 1, height >> 1] + ")");
-
-var filename = 'data/data.csv';
-loadFile(filename);
-
 
 function progress(data) {
     // console.log(data);
@@ -31,19 +29,19 @@ function draw(data, bounds) {
     var fill = d3.scale.category20();
 
     vis.selectAll("text")
-	.data(data)
-	.enter()
-	.append("text")
-	.style({
-	    "font-size": function(d) { return d.size + "px"; },
-	    "font-family": "Impact",
-	    "fill": function(d, i) { return fill(i); }
-	})
-	.attr({
-	    "text-anchor": "middle",
-	    "transform": function(d) { return "translate(" + [d.x, d.y] + ") rotate(" + d.rotate + ")"; }
-	})
-	.text(function(d) { return d.text; });
+    	.data(data)
+    	.enter()
+    	.append("text")
+    	.style({
+    	    "font-size": function(d) { return d.size + "px"; },
+    	    "font-family": "Impact",
+    	    "fill": function(d, i) { return fill(i); }
+    	})
+    	.attr({
+    	    "text-anchor": "middle",
+    	    "transform": function(d) { return "translate(" + [d.x, d.y] + ") rotate(" + d.rotate + ")"; }
+    	})
+    	.text(function(d) { return d.text; });
 }
 
 function loadFile(filename) {
@@ -58,3 +56,12 @@ function loadFile(filename) {
 	layout.stop().words(words).start();
     });
 }
+
+
+var filename = $('select option:selected').val();
+loadFile(filename);
+
+$('#file-select').change(function() {
+    var filename = $('select option:selected').val();
+    loadFile(filename);
+});
