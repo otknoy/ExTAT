@@ -65,4 +65,24 @@ function createBarChart(data) {
 		return translate + " " + rotate;
 	    }
 	});
+
+    // value label
+    svg.selectAll("text.value")
+	.data(data)
+	.enter()
+	.append("text")
+	.text(function(d) { return d.value; })
+	.attr("class", "value")
+	.attr("fill", "white")
+	.attr({
+	    "text-anchor": "text-before-edge",
+	    "dominant-baseline": "text-before-edge"
+	})
+	.attr("x", function(d, i) {
+	    return i * (width / data.length);
+	})
+	.attr("y", function(d, i) {
+	    return height - yScale(d.value);
+	});
+
 }
