@@ -9,13 +9,12 @@ d3.csv(filename, function(data){
     var words = data.map(function(d) {
 	return {
 	    text: d.word,
-	    size: d.count
+	    size: parseInt(d.count)
 	};
     });
 
     var fontSizeScale = d3.scale.pow()
-	    // .domain([0, d3.max(words, function(d) { return d.size; })])
-	    .domain([0, 28])
+	    .domain([0, d3.max(words, function(d) { return d.size; })])
 	    .range([0, 128]);
 
     var svg = d3.select(selector).append("svg")
