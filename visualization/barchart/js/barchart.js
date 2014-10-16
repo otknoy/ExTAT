@@ -50,14 +50,12 @@ function createBarChart(data) {
 	})
 	.attr("fill", "teal");
 
-    // label
+    // text label
     svg.selectAll("text")
 	.data(data)
 	.enter()
 	.append("text")
-	.text(function(d) {
-	    return d.label;
-	})
+	.text(function(d) { return d.label; })
 	.attr("fill", "white")
         .attr({
 	    "dominant-baseline": "middle",
