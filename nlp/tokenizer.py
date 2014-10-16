@@ -18,10 +18,17 @@ def tokenizeJp(text):
         basic_form = node.feature.split(',')[6].decode('utf-8')
         if basic_form == '*':
             basic_form = surface
+
+        is_not_noun = not node.posid in range(38, 47+1)
+        is_symbol = re.compile(r'^[!"#\$\%\&\'\(\)\*\+,\-\./:;\<\=\>\?\@\[\\\]\^\_\`\{\}\~\|]+$').search(basic_form)
+        if any([is_not_noun, is_symbol]):
+            node = node.next
+            continue
+
         tokens.append(basic_form)
 
         node = node.next
-        
+
     return tokens[1:-1]
 
 # default
