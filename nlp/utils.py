@@ -11,7 +11,7 @@ def term_frequency(terms, normalize=False):
         tf[t] += 1
     if normalize:
         for t, f in tf.items():
-            tf[t] = math.log(tf[t] + 1) / math.log(len(terms))
+            tf[t] = math.log(tf[t] + 1) / math.log(len(terms) + 1)
     return tf
 
 def document_frequency(texts):
