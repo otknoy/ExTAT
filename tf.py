@@ -23,5 +23,5 @@ for filename, text in data.items():
     v = nlp.TextVectorizer.TfVectorizer(tokenizer=nlp.tokenizer.tokenizeJp, texts=text)
     tf = v.vectorize()
 
-    output = './output/' + os.path.basename(filename)
+    output = './output/' + os.path.basename(filename) + '.tf'
     save(output, tf)
