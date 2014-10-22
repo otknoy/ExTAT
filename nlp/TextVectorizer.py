@@ -10,8 +10,8 @@ class Vectorizer:
 
 class TfVectorizer(Vectorizer):
     def vectorize(self):
-        docs = [self.tokenizer(t.encode('utf-8')) for t in self.texts]
-        return [utils.term_frequency(d, normalize=False) for d in docs]
+        doc = self.tokenizer(self.texts.encode('utf-8'))
+        return utils.term_frequency(doc, normalize=False)
 
 class TfidfVectorizer(Vectorizer):
     def vectorize(self):
